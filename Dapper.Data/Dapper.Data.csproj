@@ -8,4 +8,8 @@
     <PackageReference Include="Dapper" Version="1.50.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LibraryCreateDatabase\LibraryCreateDatabase.csproj" />
+  </ItemGroup>
+
 </Project>

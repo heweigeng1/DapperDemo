@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EF.Models
+namespace LibraryCreateDatabase.Model
 {
     public class User
     {
-         public string UserName { get; set; }
+        public Guid Id { get; set; }
+        public string UserName { get; set; }
         public string PhoneNum { get; set; }
     }
 }
