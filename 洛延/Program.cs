@@ -3,8 +3,10 @@ using LibraryCreateDatabase;
 using LibraryCreateDatabase.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace 洛延
 {
@@ -41,23 +43,49 @@ namespace 洛延
             //DateTime efendtime = DateTime.Now;
             //Console.WriteLine($"EF批量添加10000个用户：{efendtime - efstrtime}");
             //utils.InitArea();
-            DateTime dpselectStrTime = DateTime.Now;
-            for (int i = 0; i < 1000; i++)
-            {
-                var area = utils.SelectAreaByCode("130500");
-            }
-            DateTime dpselectEndTime = DateTime.Now;
-           
+            //DateTime dpselectStrTime = DateTime.Now;
+            //for (int i = 0; i < 1000; i++)
+            //{
+            //    var area = utils.SelectAreaByCode("130500");
+            //}
+            //DateTime dpselectEndTime = DateTime.Now;
 
-            DateTime efselectStrTime = DateTime.Now;
-            for (int i = 0; i < 1000; i++)
+
+            //DateTime efselectStrTime = DateTime.Now;
+            //for (int i = 0; i < 1000; i++)
+            //{
+            //    var area = efUtils.LinqSelectArea("130500");
+            //}
+            //DateTime efselectEndTime = DateTime.Now;
+            //Console.WriteLine($"dapper查询1000次：{dpselectEndTime - dpselectStrTime}");
+            //Console.WriteLine($"EF查询1000次：{efselectEndTime - efselectStrTime}");
+            SortedDictionary<string, string> sort = new SortedDictionary<string, string>();
+            object dto = new AreaDto
             {
-                var area = efUtils.LinqSelectArea("130500");
-            }
-            DateTime efselectEndTime = DateTime.Now;
-            Console.WriteLine($"dapper查询1000次：{dpselectEndTime - dpselectStrTime}");
-            Console.WriteLine($"EF查询1000次：{efselectEndTime - efselectStrTime}");
+                Name="woshiceshi",
+                pName="ceshishsishi"
+            };
+            Type type = dto.GetType();
+            var ts = type.GetProperties();
             Console.ReadKey();
         }
     }
+    //public static SortedDictionary<string, string> ObjToSortedDictionary(this object obj)
+    //{
+    //    SortedDictionary<string, string> map = new SortedDictionary<string, string>();
+    //    Type t = obj.GetType(); // 获取对象对应的类， 对应的类型
+
+    //    PropertyInfo[] pi = t.GetProperties(BindingFlags.Public | BindingFlags.Instance); // 获取当前type公共属性
+
+    //    foreach (PropertyInfo p in pi)
+    //    {
+    //        MethodInfo m = p.GetGetMethod();
+
+    //        if (m != null && m.IsPublic)
+    //        {
+
+    //        }
+    //    }
+    //    return map;
+    //}
 }
